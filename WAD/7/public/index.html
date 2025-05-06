@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>My Static Website</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet" />
+</head>
+<body>
+  <header>
+    <nav class="navbar">
+      <div class="logo">MySite</div>
+      <ul class="nav-links">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section id="home" class="hero-section">
+    <div class="hero-content">
+      <h1>Welcome to My Static Website</h1>
+      <p>Beautiful and modern design served with Node.js</p>
+      <a href="#features" class="btn-primary">Explore Features</a>
+    </div>
+    <div class="hero-image">
+      <img src="https://images.pexels.com/photos/4145193/pexels-photo-4145193.jpeg?auto=compress&cs=tinysrgb&w=600" alt="Modern website" />
+    </div>
+  </section>
+
+  <section id="features" class="features-section">
+    <h2>Features</h2>
+    <div class="features-cards">
+      <div class="card">
+        <h3>Easy to Use</h3>
+        <p>Simple setup and easy to customize for any purpose.</p>
+      </div>
+      <div class="card">
+        <h3>Responsive</h3>
+        <p>Looks great on any device, from desktops to smartphones.</p>
+      </div>
+      <div class="card">
+        <h3>Fast Loading</h3>
+        <p>Optimized images and code ensure quick load times.</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="about" class="about-section">
+    <h2>About Us</h2>
+    <p>
+      We build simple yet powerful static websites served efficiently using Node.js.
+    </p>
+  </section>
+
+  <section id="contact" class="contact-section">
+    <h2>Contact Us</h2>
+    <form>
+      <input type="text" placeholder="Name" required />
+      <input type="email" placeholder="Email" required />
+      <textarea placeholder="Message" required></textarea>
+      <button type="submit" class="btn-primary">Send Message</button>
+    </form>
+  </section>
+
+  <footer>
+    <p>&copy; 2024 MySite. All rights reserved.</p>
+  </footer>
+</body>
+</html>
+

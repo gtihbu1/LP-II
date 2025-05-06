@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Updating DOM with jQuery</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <style>
+        #myParagraph {
+            font-size: 20px;
+            color: black;
+            margin: 20px 0;
+        }
+
+        #myButton {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Updating DOM using jQuery</h1>
+    <p id="myParagraph">This is the original text.</p>
+    <button id="myButton">Click me to change the text!</button>
+
+    <script>
+        $(document).ready(function () {
+            $('#myButton').click(function () {
+                $('#myParagraph').text('The text has been updated!').css('color', 'blue');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

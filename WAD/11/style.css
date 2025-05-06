@@ -1,0 +1,144 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background: #f0f2f5;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    min-height: 100vh;
+}
+
+.container {
+    background: #fff;
+    border-radius: 8px;
+    width: 100%;
+    max-width: 450px;
+    padding: 20px 30px 40px 30px;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 25px;
+    color: #333;
+}
+
+form {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+input[type="text"] {
+    flex-grow: 1;
+    padding: 10px 15px;
+    font-size: 1rem;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #5b9bd5;
+    outline: none;
+}
+
+button {
+    background-color: #5b9bd5;
+    color: white;
+    border: none;
+    border-radius: 6px;
+    padding: 11px 18px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:disabled {
+    background-color: #a5c0f1;
+    cursor: not-allowed;
+}
+
+button:hover:not(:disabled) {
+    background-color: #4178d7;
+}
+
+ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 350px;
+    overflow-y: auto;
+    border-top: 1px solid #ddd;
+}
+
+li {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #ddd;
+    font-size: 1rem;
+    color: #333;
+}
+
+li.editing input[type="text"] {
+    font-size: 1rem;
+    padding: 6px 10px;
+    flex-grow: 1;
+    border-radius: 4px;
+    border: 1px solid #888;
+    margin-right: 12px;
+}
+
+.actions {
+    display: flex;
+    gap: 8px;
+}
+
+.btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1.2rem;
+    color: #5b9bd5;
+    padding: 3px 6px;
+    border-radius: 4px;
+    transition: background-color 0.2s ease;
+}
+
+.btn:hover {
+    background-color: #dbe7f8;
+}
+
+.btn.delete {
+    color: #d9534f;
+}
+
+.btn.save {
+    color: #4cae4c;
+}
+
+.btn.cancel {
+    color: #f0ad4e;
+}
+
+@media(max-width: 480px) {
+    .container {
+        padding: 15px 20px 30px 20px;
+        width: 95%;
+    }
+
+    button,
+    input[type="text"] {
+        font-size: 0.9rem;
+    }
+
+    li {
+        font-size: 0.95rem;
+    }
+}

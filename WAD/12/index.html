@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Simple jQuery Mobile Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- jQuery Mobile CSS -->
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>
+    <!-- jQuery Mobile JS -->
+    <script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+
+<body>
+
+    <div data-role="page" id="mainPage">
+
+        <div data-role="header" data-theme="b">
+            <h1>My jQuery Mobile Site</h1>
+        </div><!-- /header -->
+
+        <div role="main" class="ui-content">
+            <p>Welcome to this simple jQuery Mobile page!</p>
+            <a href="#" class="ui-btn ui-corner-all ui-shadow ui-btn-b" id="alertBtn">Click me</a>
+        </div><!-- /content -->
+
+        <div data-role="footer" data-theme="b">
+            <h4>Footer Content</h4>
+        </div><!-- /footer -->
+
+    </div><!-- /page -->
+
+    <script>
+        $(document).ready(function () {
+            $('#alertBtn').click(function () {
+                alert('Button clicked!');
+            });
+        });
+    </script>
+
+</body>
+
+</html>

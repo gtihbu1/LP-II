@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Simple CRUD Application</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container" role="main" aria-label="Simple CRUD Application">
+        <h1>Simple CRUD App</h1>
+
+        <form id="item-form" aria-label="Add item form">
+            <input type="text" id="item-input" placeholder="Enter new item" aria-required="true"
+                aria-describedby="input-desc" />
+            <button type="submit" id="add-button" disabled>Add</button>
+        </form>
+        <p id="input-desc" style="font-size: 0.85rem; color: #666; margin-top: -20px; margin-bottom: 14px;">
+            Type an item name then click Add to create a new item.
+        </p>
+
+        <ul id="items-list" aria-live="polite" aria-relevant="additions removals"></ul>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>
