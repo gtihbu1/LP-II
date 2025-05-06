@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Login</h1>
+        <div id="message" class="message"></div>
+        <div id="error-message" class="error"></div>
+        <form id="login-form">
+            <div class="form-group">
+                <label for="email">Email:</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password:</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+            <button type="submit" class="btn">Login</button>
+        </form>
+        <p>Don't have an account? <a href="/signup">Sign Up</a></p>
+        <p><a href="#" id="forgot-password">Forgot Password?</a></p>
+    </div>
+
+    <script src="/static/js/firebase-config.js"></script>
+    <script src="/static/js/auth.js"></script>
+    <script>
+        // Check for success message in URL
+        const urlParams = new URLSearchParams(window.location.search);
+        const message = urlParams.get('message');
+        if (message) {
+            document.getElementById('message').textContent = message;
+        }
+        
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const errorMessage = document.getElementById('error-message');
+            
+            errorMessage.textContent = '';
+            
+            fetch('/api/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    email,
+                    password
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    window.location.href = '/dashboard';
+                } else {
+                    errorMessage.textContent = data.message;
+                }
+            })
+            .catch(error => {
+                errorMessage.textContent = 'An error occurred during login. Please try again.';
+                console.error('Error:', error);
+            });
+        });
+        
+        document.getElementById('forgot-password').addEventListener('click', function(e) {
+            e.preventDefault();
+            
+            const email = document.getElementById('email').value;
+            const errorMessage = document.getElementById('error-message');
+            const messageDiv = document.getElementById('message');
+            
+            errorMessage.textContent = '';
+            
+            if (!email) {
+                errorMessage.textContent = 'Please enter your email address';
+                return;
+            }
+            
+            // This would be implemented using Firebase password reset
+            alert('Password reset functionality would be implemented here');
+            messageDiv.textContent = 'Password reset email sent. Please check your inbox.';
+        });
+    </script>
+</body>
+</html>

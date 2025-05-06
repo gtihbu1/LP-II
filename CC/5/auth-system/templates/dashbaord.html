@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="/static/css/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome to your Dashboard</h1>
+        <div class="profile-section">
+            <h2>Your Profile</h2>
+            <p><strong>Name:</strong> <span id="user-name">{{ user.displayName }}</span></p>
+            <p><strong>Email:</strong> {{ user.email }}</p>
+            <p><strong>Account Created:</strong> {{ user.created.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+            {% if user.lastLogin %}
+            <p><strong>Last Login:</strong> {{ user.lastLogin.strftime('%Y-%m-%d %H:%M:%S') }}</p>
+            {% endif %}
+        </div>
+        
+        <div class="edit-profile">
+            <h3>Edit Profile</h3>
+            <div id="update-error" class="error"></div>
+            <div id="update-message" class="message"></div>
+            <form id="update-form">
+                <div class="form-group">
+                    <label for="update-name">Name:</label>
+                    <input type="text" id="update-name" name="update-name" value="{{ user.displayName }}">
+                </div>
+                <button type="submit" class="btn">Update Profile</button>
+            </form>
+        </div>
+        
+        <div class="logout-section">
+            <a href="/logout" class="btn btn-danger">Logout</a>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById('update-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const displayName = document.getElementById('update-name').value;
+            const errorDiv = document.getElementById('update-error');
+            const messageDiv = document.getElementById('update-message');
+            
+            errorDiv.textContent = '';
+            messageDiv.textContent = '';
+            
+            fetch('/api/update-profile', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    displayName
+                }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    messageDiv.textContent = 'Profile updated successfully';
+                    document.getElementById('user-name').textContent = displayName;
+                } else {
+                    errorDiv.textContent = data.message;
+                }
+            })
+            .catch(error => {
+                errorDiv.textContent = 'An error occurred. Please try again.';
+                console.error('Error:', error);
+            });
+        });
+    </script>
+</body>
+</html>
