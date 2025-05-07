@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Firebase Auth App</title>
+  <link rel="stylesheet" href="style.css">
+
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+
+</head>
+
+<body>
+
+  <div class="container">
+    <h2>Sign Up</h2>
+    <input type="email" id="signupEmail" placeholder="Email">
+    <input type="password" id="signupPassword" placeholder="Password">
+    <button onclick="signUp()">Sign Up</button>
+
+    <h2>Log In</h2>
+    <input type="email" id="loginEmail" placeholder="Email">
+    <input type="password" id="loginPassword" placeholder="Password">
+    <button onclick="logIn()">Log In</button>
+  </div>
+
+  
+  <script>
+    alert("hell")
+    // import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCJDCJG9uHS78AHIfMFmY9xHIfPcNAFBQY",
+      authDomain: "cc-practical-5-4eab3.firebaseapp.com",
+      projectId: "cc-practical-5-4eab3",
+      storageBucket: "cc-practical-5-4eab3.firebasestorage.app",
+      messagingSenderId: "89098055474",
+      appId: "1:89098055474:web:466fc0b6c4d1927968b12b"
+    };
+
+    firebase.initializeApp(firebaseConfig);
+
+    alert("hello")
+    console.log(firebase)
+
+    // 🔐 Signup function
+    function signUp() {
+      const email = document.getElementById("signupEmail").value;
+      const password = document.getElementById("signupPassword").value;
+
+      firebase.auth().createUserWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          alert("✅ Signup successful!");
+        })
+        .catch((error) => {
+          alert("❌ Signup Error: " + error.message);
+        });
+    }
+
+    // 🔐 Login function
+    function logIn() {
+      const email = document.getElementById("loginEmail").value;
+      const password = document.getElementById("loginPassword").value;
+
+      firebase.auth().signInWithEmailAndPassword(email, password)
+        .then((userCredential) => {
+          alert("✅ Login successful!");
+        })
+        .catch((error) => {
+          alert("❌ Login Error: " + error.message);
+        });
+    }
+  </script>
+  <script src="script.js"></script>
+</body>
+
+</html>

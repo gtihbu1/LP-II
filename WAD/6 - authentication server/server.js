@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const jwt = require('jsonwebtoken');
+const path = require('path');
 
 const app = express();
 const PORT = 3000;
@@ -11,6 +12,9 @@ const JWT_SECRET = 'your_jwt_secret_key';
 // Middleware to parse JSON bodies
 app.use(bodyParser.json());
 
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
 // Hardcoded user (in real apps, use DB)
 const users = [
     {
@@ -18,6 +22,19 @@ const users = [
         password: 'password123' // In production, passwords must be hashed!
     }
 ];
+
+// Routes for serving HTML pages
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+app.get('/login', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'login.html'));
+});
+
+app.get('/dashboard', authenticateToken, (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'dashboard.html'));
+});
 
 // Login route
 app.post('/login', (req, res) => {
@@ -65,3 +82,4 @@ app.get('/protected', authenticateToken, (req, res) => {
 app.listen(PORT, () => {
     console.log(`Authentication server running on http://localhost:${PORT}`);
 });
+
